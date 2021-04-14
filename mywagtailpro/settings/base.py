@@ -49,8 +49,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-# required also for auth
+    # required also for auth
     'django.contrib.sites',
+
+    'institutions',
 ]
 
 MIDDLEWARE = [
