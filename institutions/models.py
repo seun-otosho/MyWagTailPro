@@ -33,7 +33,7 @@ class ContactCategory(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
 
     class Meta:
-        pass
+        verbose_name_plural = "Contact Categories"
 
     def __str__(self):
         return str(self.type)
@@ -56,7 +56,7 @@ class Address(models.Model):
     street_address = models.TextField(max_length=128)
 
     class Meta:
-        pass
+        verbose_name_plural = "Addresses"
 
     def __str__(self):
         return str(self.pk)
@@ -68,7 +68,7 @@ class Address(models.Model):
         return reverse("members_Address_update", args=(self.pk,))
 
 
-class MemberCategory(models.Model):
+class InstitutionCategory(models.Model):
 
     # Fields
     created = models.DateTimeField(auto_now_add=True, editable=False)
@@ -76,7 +76,7 @@ class MemberCategory(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
     class Meta:
-        pass
+        verbose_name_plural = "Institution Categories"
 
     def __str__(self):
         return str(self.category)
@@ -88,13 +88,13 @@ class MemberCategory(models.Model):
         return reverse("members_MemberCategory_update", args=(self.pk,))
 
 
-class Member(models.Model):
+class Institution(models.Model):
 
     # Relationships
     contacts = models.ForeignKey(
         "institutions.ContactDetail", on_delete=models.CASCADE, blank=True, null=True, related_name='contact_details'
     )
-    category = models.ForeignKey("institutions.MemberCategory", to_field='category', on_delete=models.DO_NOTHING)  #
+    category = models.ForeignKey("institutions.InstitutionCategory", to_field='category', on_delete=models.DO_NOTHING)  #
     ownership = models.ForeignKey("institutions.Ownership", to_field='type', on_delete=models.CASCADE)  #
     address = models.ForeignKey("institutions.Address", on_delete=models.CASCADE, blank=True, null=True, )
 

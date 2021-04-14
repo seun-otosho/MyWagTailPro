@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from . import models
-from .models import MemberCategory, Ownership, Member
+from .models import InstitutionCategory, Ownership, Institution
 
 
 class ContactDetailsSerializer(serializers.ModelSerializer):
@@ -41,9 +41,9 @@ class AddressSerializer(serializers.ModelSerializer):
         ]
 
 
-class MemberCategorySerializer(serializers.ModelSerializer):
+class InstitutionCategorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.MemberCategory
+        model = models.InstitutionCategory
         fields = [
             "created",
             "category",
@@ -51,14 +51,14 @@ class MemberCategorySerializer(serializers.ModelSerializer):
         ]
 
 
-class MemberSerializer(serializers.ModelSerializer):
-    category = serializers.SlugRelatedField(queryset=models.MemberCategory.objects.all(), slug_field='category')
+class InstitutionSerializer(serializers.ModelSerializer):
+    category = serializers.SlugRelatedField(queryset=models.InstitutionCategory.objects.all(), slug_field='category')
     ownership = serializers.SlugRelatedField(queryset=models.Ownership.objects.all(), slug_field='type')
 
     contacts = ContactDetailsSerializer(many=True,  )
 
     class Meta:
-        model = models.Member
+        model = models.Institution
         fields = [
             "name",
             "date_licensed",
@@ -77,14 +77,14 @@ class MemberSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         contacts_data = validated_data.pop('contacts')
-        member = models.Member.objects.create(**validated_data)
+        member = models.Institution.objects.create(**validated_data)
         for contact_detail in contacts_data:
             models.ContactDetail.objects.create(member=member, **contact_detail)
         return member
 
     def update(self, instance, validated_data):
         contacts_data = validated_data.pop('contacts')
-        # member = models.Member.objects.update_or_create(default={"id": instance.id}, **validated_data)
+        # member = models.Institution.objects.update_or_create(default={"id": instance.id}, **validated_data)
         for contact_detail in contacts_data:
             models.ContactDetail.objects.update_or_create(member=instance, **contact_detail)
         return instance

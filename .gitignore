@@ -160,3 +160,4 @@ Thumbs.db
 
 
 # End of https://www.toptal.com/developers/gitignore/api/django
+mywagtailpro/__pycache__/urls.cpython-39.pyc

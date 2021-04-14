@@ -19,7 +19,7 @@ class ContactDetailsAdmin(admin.ModelAdmin):
         "created",
     ]
     readonly_fields = [
-        "contact_info",
+        # "contact_info",
         "last_updated",
         "created",
     ]
@@ -35,13 +35,13 @@ class ContactCategoryAdminForm(forms.ModelForm):
 class ContactCategoryAdmin(admin.ModelAdmin):
     form = ContactCategoryAdminForm
     list_display = [
-        "last_updated",
         "type",
+        "last_updated",
         "created",
     ]
     readonly_fields = [
         "last_updated",
-        "type",
+        # "type",
         "created",
     ]
 
@@ -64,45 +64,45 @@ class AddressAdmin(admin.ModelAdmin):
         "street_address",
     ]
     readonly_fields = [
-        "state",
-        "country",
+        # "state",
+        # "country",
         "last_updated",
-        "area",
+        # "area",
         "created",
-        "street_address",
+        # "street_address",
     ]
 
 
-class MemberCategoryAdminForm(forms.ModelForm):
+class InstitutionCategoryAdminForm(forms.ModelForm):
 
     class Meta:
-        model = models.MemberCategory
+        model = models.InstitutionCategory
         fields = "__all__"
 
 
-class MemberCategoryAdmin(admin.ModelAdmin):
-    form = MemberCategoryAdminForm
+class InstitutionCategoryAdmin(admin.ModelAdmin):
+    form = InstitutionCategoryAdminForm
     list_display = [
-        "created",
         "category",
+        "created",
         "last_updated",
     ]
     readonly_fields = [
         "created",
-        "category",
+        # "category",
         "last_updated",
     ]
 
 
-class MemberAdminForm(forms.ModelForm):
+class InstitutionAdminForm(forms.ModelForm):
 
     class Meta:
-        model = models.Member
+        model = models.Institution
         fields = "__all__"
 
 
-class MemberAdmin(admin.ModelAdmin):
-    form = MemberAdminForm
+class InstitutionAdmin(admin.ModelAdmin):
+    form = InstitutionAdminForm
     list_display = [
         "name",
         "date_licensed",
@@ -113,13 +113,13 @@ class MemberAdmin(admin.ModelAdmin):
         "old_name",
     ]
     readonly_fields = [
-        "name",
-        "date_licensed",
+        # "name",
+        # "date_licensed",
         "created",
         "last_updated",
-        "date_re_registered",
-        "comments",
-        "old_name",
+        # "date_re_registered",
+        # "comments",
+        # "old_name",
     ]
 
 
@@ -138,7 +138,7 @@ class OwnershipAdmin(admin.ModelAdmin):
         "last_updated",
     ]
     readonly_fields = [
-        "type",
+        # "type",
         "created",
         "last_updated",
     ]
@@ -147,6 +147,6 @@ class OwnershipAdmin(admin.ModelAdmin):
 admin.site.register(models.ContactDetail, ContactDetailsAdmin)
 admin.site.register(models.ContactCategory, ContactCategoryAdmin)
 admin.site.register(models.Address, AddressAdmin)
-admin.site.register(models.MemberCategory, MemberCategoryAdmin)
-admin.site.register(models.Member, MemberAdmin)
+admin.site.register(models.InstitutionCategory, InstitutionCategoryAdmin)
+admin.site.register(models.Institution, InstitutionAdmin)
 admin.site.register(models.Ownership, OwnershipAdmin)

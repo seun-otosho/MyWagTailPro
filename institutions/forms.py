@@ -30,17 +30,17 @@ class AddressForm(forms.ModelForm):
         ]
 
 
-class MemberCategoryForm(forms.ModelForm):
+class InstitutionCategoryForm(forms.ModelForm):
     class Meta:
-        model = models.MemberCategory
+        model = models.InstitutionCategory
         fields = [
             "category",
         ]
 
 
-class MemberForm(forms.ModelForm):
+class InstitutionForm(forms.ModelForm):
     class Meta:
-        model = models.Member
+        model = models.Institution
         fields = [
             "name",
             "date_licensed",

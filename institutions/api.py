@@ -28,19 +28,19 @@ class AddressViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
-class MemberCategoryViewSet(viewsets.ModelViewSet):
-    """ViewSet for the MemberCategory class"""
+class InstitutionCategoryViewSet(viewsets.ModelViewSet):
+    """ViewSet for the InstitutionCategory class"""
 
-    queryset = models.MemberCategory.objects.all()
-    serializer_class = serializers.MemberCategorySerializer
+    queryset = models.InstitutionCategory.objects.all()
+    serializer_class = serializers.InstitutionCategorySerializer
     permission_classes = [permissions.IsAuthenticated]
 
 
-class MemberViewSet(viewsets.ModelViewSet):
-    """ViewSet for the Member class"""
+class InstitutionViewSet(viewsets.ModelViewSet):
+    """ViewSet for the Institution class"""
 
-    queryset = models.Member.objects.all()
-    serializer_class = serializers.MemberSerializer
+    queryset = models.Institution.objects.all()
+    serializer_class = serializers.InstitutionSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 

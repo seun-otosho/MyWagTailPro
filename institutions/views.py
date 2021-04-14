@@ -66,45 +66,45 @@ class AddressUpdateView(generic.UpdateView):
     pk_url_kwarg = "pk"
 
 
-class MemberCategoryListView(generic.ListView):
-    model = models.MemberCategory
-    form_class = forms.MemberCategoryForm
+class InstitutionCategoryListView(generic.ListView):
+    model = models.InstitutionCategory
+    form_class = forms.InstitutionCategoryForm
 
 
-class MemberCategoryCreateView(generic.CreateView):
-    model = models.MemberCategory
-    form_class = forms.MemberCategoryForm
+class InstitutionCategoryCreateView(generic.CreateView):
+    model = models.InstitutionCategory
+    form_class = forms.InstitutionCategoryForm
 
 
-class MemberCategoryDetailView(generic.DetailView):
-    model = models.MemberCategory
-    form_class = forms.MemberCategoryForm
+class InstitutionCategoryDetailView(generic.DetailView):
+    model = models.InstitutionCategory
+    form_class = forms.InstitutionCategoryForm
 
 
-class MemberCategoryUpdateView(generic.UpdateView):
-    model = models.MemberCategory
-    form_class = forms.MemberCategoryForm
+class InstitutionCategoryUpdateView(generic.UpdateView):
+    model = models.InstitutionCategory
+    form_class = forms.InstitutionCategoryForm
     pk_url_kwarg = "pk"
 
 
-class MemberListView(generic.ListView):
-    model = models.Member
-    form_class = forms.MemberForm
+class InstitutionListView(generic.ListView):
+    model = models.Institution
+    form_class = forms.InstitutionForm
 
 
-class MemberCreateView(generic.CreateView):
-    model = models.Member
-    form_class = forms.MemberForm
+class InstitutionCreateView(generic.CreateView):
+    model = models.Institution
+    form_class = forms.InstitutionForm
 
 
-class MemberDetailView(generic.DetailView):
-    model = models.Member
-    form_class = forms.MemberForm
+class InstitutionDetailView(generic.DetailView):
+    model = models.Institution
+    form_class = forms.InstitutionForm
 
 
-class MemberUpdateView(generic.UpdateView):
-    model = models.Member
-    form_class = forms.MemberForm
+class InstitutionUpdateView(generic.UpdateView):
+    model = models.Institution
+    form_class = forms.InstitutionForm
     pk_url_kwarg = "pk"
 
 
