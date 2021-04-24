@@ -47,7 +47,7 @@ class InstitutionForm(forms.ModelForm):
             "date_re_registered",
             "comments",
             "old_name",
-            "contacts",
+            # "contacts",
             "category",
             "ownership",
             "address",

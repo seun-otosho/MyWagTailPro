@@ -6,6 +6,9 @@ class ContactDetail(models.Model):
 
     # Relationships
     type = models.ForeignKey("institutions.ContactCategory", to_field='type', on_delete=models.DO_NOTHING)
+    institution = models.ForeignKey(
+        "institutions.Institution", on_delete=models.DO_NOTHING, related_name='contact_details'
+    ) # blank=True, null=True,
 
     # Fields
     contact_info = models.CharField(max_length=64)
@@ -13,7 +16,7 @@ class ContactDetail(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
 
     class Meta:
-        pass
+        db_table = 'contact_details'
 
     def __str__(self):
         return str(self.pk)
@@ -33,6 +36,7 @@ class ContactCategory(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
 
     class Meta:
+        db_table = 'contact_categories'
         verbose_name_plural = "Contact Categories"
 
     def __str__(self):
@@ -56,6 +60,7 @@ class Address(models.Model):
     street_address = models.TextField(max_length=128)
 
     class Meta:
+        db_table = 'addresses'
         verbose_name_plural = "Addresses"
 
     def __str__(self):
@@ -76,6 +81,7 @@ class InstitutionCategory(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
     class Meta:
+        db_table = 'institution_categories'
         verbose_name_plural = "Institution Categories"
 
     def __str__(self):
@@ -91,9 +97,6 @@ class InstitutionCategory(models.Model):
 class Institution(models.Model):
 
     # Relationships
-    contacts = models.ForeignKey(
-        "institutions.ContactDetail", on_delete=models.CASCADE, blank=True, null=True, related_name='contact_details'
-    )
     category = models.ForeignKey("institutions.InstitutionCategory", to_field='category', on_delete=models.DO_NOTHING)  #
     ownership = models.ForeignKey("institutions.Ownership", to_field='type', on_delete=models.CASCADE)  #
     address = models.ForeignKey("institutions.Address", on_delete=models.CASCADE, blank=True, null=True, )
@@ -108,7 +111,7 @@ class Institution(models.Model):
     old_name = models.CharField(max_length=64)
 
     class Meta:
-        pass
+        db_table = 'institutions'
 
     def __str__(self):
         return str(self.name)
@@ -128,7 +131,7 @@ class Ownership(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
 
     class Meta:
-        pass
+        db_table = 'ownerships'
 
     def __str__(self):
         return str(self.type)
